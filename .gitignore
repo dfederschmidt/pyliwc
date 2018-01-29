@@ -1,0 +1,4 @@
+.vscode/
+*.egg-info/
+LIWC2015.dic
+__pycache__
