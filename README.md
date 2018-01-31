@@ -1,6 +1,15 @@
 # liwc-py
 
+![RTD](https://media.readthedocs.org/static/projects/badges/passing.svg)
+
 Requires a version of the LIWC dictionary in .dic format. Still very much work in process. Results might differ (albeit marginally) from the commercial LIWC software.
+
+## Installation
+
+```
+pipenv install -e git+https://github.com/dfederschmidt/pyliwc#egg=pyliwc
+```
+
 
 ## Usage 
 
