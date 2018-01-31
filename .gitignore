@@ -2,3 +2,4 @@
 *.egg-info/
 LIWC2015.dic
 __pycache__
+.ipynb_checkpoints/
