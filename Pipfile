@@ -12,6 +12,7 @@ joblib = "*"
 nltk = "*"
 sphinx = "*"
 sphinx-autobuild = "*"
+sphinx-rtd-theme = "*"
 
 
 [dev-packages]

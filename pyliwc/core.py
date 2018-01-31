@@ -41,6 +41,7 @@ class LIWC():
         return category_scores
 
     def process_df_mp(self, df, col):
+        """Multi-process version of process_df"""
         cpu_count = mp.cpu_count()
         p = mp.Pool(cpu_count)
 
