@@ -1,4 +1,4 @@
-# liwc-py
+# pyliwc
 
 ![RTD](https://media.readthedocs.org/static/projects/badges/passing.svg)
 
