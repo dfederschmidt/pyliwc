@@ -11,8 +11,10 @@ from nltk import word_tokenize
 
 TRANSLATE_TABLE = dict((ord(char), None) for char in string.punctuation)
 
+
 class LIWC():
     """Top-level class"""
+
     def __init__(self, dict_path):
         self.lexicon, self.category_names = self._read_dic(dict_path)
         self.trie = self._build_trie(self.lexicon)
@@ -38,19 +40,33 @@ class LIWC():
 
         return category_scores
 
-
-    def process_series_mp(self, series):
+    def process_df_mp(self, df, col):
         cpu_count = mp.cpu_count()
         p = mp.Pool(cpu_count)
-        pool_results = p.map(self.process_series, np.array_split(series, cpu_count))
-        p.close()
 
+        batches = np.array_split(df, cpu_count)
+
+        pool_results = p.starmap(self.process_df,[(batch, col) for batch in batches if len(batch) > 0])
+        p.close()
+        
         return pd.concat(pool_results, axis=0)
 
+    def process_df(self, df, col):
+        """Run LIWC on a dataframe column"""
+        df[col] = df[col].astype(str)
 
-    def process_series(self, series):
-        """Run LIWC on a pandas Series"""
-        res = series.apply(self.process_text)
+        def apply_df(row, col):
+            score = self.process_text(row[col])
+            scores = {}
+            
+            for category in score:
+                scores[category] = score[category]
+
+            return pd.Series(scores)
+
+
+        res = df.apply(apply_df, args=(col,), axis=1)
+
         return res
 
 

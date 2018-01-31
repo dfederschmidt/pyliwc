@@ -16,19 +16,16 @@ class TestLIWC(unittest.TestCase):
         test_string = "I'm very angry right now - crazy stupid love!"
         res = self.liwc.process_text(test_string)
 
-        print(res)
-
-    def test_series(self):
-        """Tests whether it works for a pandas Series"""
-        series = pd.Series(["hello, you are funny", "goodbye you"])
-        res = self.liwc.process_series(series)
-
-        print(res)
+    def test_df(self):
+        """Tests whether it works for a pandas dataframe"""
+        df = pd.DataFrame([["all nice people", "mean people"], ["terrible", "awesome"]], columns=list('AB'), index=[12,3])
+        res = self.liwc.process_df(df, "A")
 
     def test_series_mp(self):
         """Tests the multiprocess implementation of process_series"""
-        series = pd.Series(random.choice(string.ascii_uppercase) for _ in range(100000))
-        res = self.liwc.process_series_mp(series)
+
+        df = pd.DataFrame([["all nice people", "mean people"], ["terrible", "awesome"]], columns=list('AB'), index=[12,3])
+        res = self.liwc.process_df_mp(df, "A")
 
         print(res)
 
