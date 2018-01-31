@@ -4,6 +4,7 @@
 
 Requires a version of the LIWC dictionary in .dic format. Still very much work in process. Results might differ (albeit marginally) from the commercial LIWC software.
 
+For the full documentation [look here](http://pyliwc.readthedocs.io/en/latest/)
 ## Installation
 
 ```
