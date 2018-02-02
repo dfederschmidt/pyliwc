@@ -33,12 +33,12 @@ liwc_scores = liwc.process_text("My text to be analyzed")
 import pandas as pd 
 
 liwc = LIWC("./LIWC2015.dic")
-series = pd.Series(["Hello World", "Good Morning"])
+df = pd.DataFrame([["all nice people", "mean people"], ["terrible", "awesome"]], columns=list('AB'), index=[12,3])
 
-liwc.process_series(series)
+liwc.process_df(df)
 
 # OR (in case of large series)
 
-liwc.process_series_mp(series)
+liwc.process_df_mp(df)
 
 ```
