@@ -27,7 +27,7 @@ liwc = LIWC("./LIWC2015.dic")
 liwc_scores = liwc.process_text("My text to be analyzed")
 ```
 
-### Process Pandas Series
+### Process Pandas Data Frame
 
 ```python
 import pandas as pd 
